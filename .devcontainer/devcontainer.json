@@ -1,0 +1,14 @@
+{
+  "name": "pull-video-dev",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "runArgs": ["-p", "9010:9010"],
+  "forwardPorts": [9010],
+  "remoteUser": "root",
+  "mounts": [
+    "source=${localWorkspaceFolder}/,target=/app/,type=bind",
+    "source=/home/pi/Videos,target=/videos,type=bind"
+  ]
+}
