@@ -21,5 +21,5 @@ DOWNLOADER_MIDDLEWARES = {
 CHROMEDRIVER_PATH = '/usr/bin/chromedriver'  # 替换为实际的 chromedriver 路径
 
 LOG_ENABLED = True
-LOG_FILE = 'scrapy.log'  # 日志输出路径
-LOG_LEVEL = 'DEBUG'            # 可选: DEBUG, INFO, WARNING, ERROR, CRITICAL
+#LOG_FILE = 'scrapy.log'  # 日志输出路径
+#LOG_LEVEL = 'DEBUG'            # 可选: DEBUG, INFO, WARNING, ERROR, CRITICAL

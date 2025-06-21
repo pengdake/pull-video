@@ -27,7 +27,8 @@ def download_video(url: str, output_path: str, proxy: str = None):
         ydl.download([url])
 
 if __name__ == '__main__':
-    url = "https://m8t.vboku.com/20190627/XnW4B78V/index.m3u8?sign=ySYYMdvqwVQdu1Ragzjit7aAITePpmy9tZINeaJ2QfU%253D"
-    output_path = '/videos/长安的荔枝/长安的荔枝-06'  # 替换为实际的输出目录
+    #url = "https://s6-e1.sbacii.com/ppot/_definst_/mp4:s15/ivod/lxj-cadlz-09-025F12456.mp4/chunklist.m3u8?vendtime=1750581960&vhash=575vNO6OYO9uoPLZF910kV5Wc5jlgtFjZ4kcjeHZc_c=&vCustomParameter=0_188.253.115.249_HK_1_0&lb=45fdd9fe1c4bc8d1cdd8568eb590b591&us=1&proxy=SpOjPJ4kSs9XOsbfBcDlRNnpDYrbCIvYQNHtONbbONGkOsyslZcR5hAObp4yNHtRsTbRcLoOMmkOsyslZcR5hAObpeqjhAuEJAnihINCRUslZcR5hAObpkmlBetixUtCfSnjxD"
+    url = "https://6tm.wdubo.com/20250609/wMCOvkEM/index.m3u8?sign=xjPe2h6mZIoHDt2zcFgObtt5PD3EH3Chaaz9hKI%252BNcM%253D"
+    output_path = '/videos/长安的荔枝/长安的荔枝-07'  # 替换为实际的输出目录
     download_video(url, output_path, PROXY)
     print(f'视频已下载到 {output_path}')
