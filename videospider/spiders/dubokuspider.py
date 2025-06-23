@@ -13,8 +13,8 @@ from util.util import extract_video_requests
 from selenium.webdriver.common.action_chains import ActionChains
 
 
-class VideoSpider(scrapy.Spider):
-    name = "videospider"
+class DubokuSpider(scrapy.Spider):
+    name = "dubokuspider"
 
     def __init__(self, keyword=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -37,24 +37,34 @@ class VideoSpider(scrapy.Spider):
         chrome_options = uc.ChromeOptions()
         #chrome_options = Options()
         chrome_options.add_argument(f"--proxy-server={proxy_url}")
-        #chrome_options.add_argument("--headless")
+        #chrome_options.add_argument("--headless=new")
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--mute-audio")
-        chrome_options.add_argument("--window-size=1280,720")
+        chrome_options.add_argument("--window-size=800,600")
         chrome_options.add_argument("--disable-popup-blocking")
         chrome_options.add_argument("--disable-blink-features=AutomationControlled")
-        chrome_options.add_argument("--disable-infobars") 
-        plugin_path = os.path.abspath("extensions/ublock")
-        chrome_options.add_argument(f"--user-data-dir={plugin_path}")
+        chrome_options.add_argument("--disable-infobars")
+        chrome_options.add_argument("--disable-background-timer-throttling")
+        chrome_options.add_argument("--disable-backgrounding-occluded-windows")
+        chrome_options.add_argument("--disable-renderer-backgrounding")
+        chrome_options.add_argument("--disable-features=TranslateUI,BlinkGenPropertyTrees") 
+        plugin_path = "/extensions"
+        # 遍历 extensions 目录下的所有目录
+        for ext in os.listdir(plugin_path):
+            ext_path = os.path.join(plugin_path, ext)
+            if os.path.isdir(ext_path):
+                chrome_options.add_argument(f"--load-extension={ext_path}")
+        data_dir = "/selenium_data"
+        chrome_options.add_argument(f"--user-data-dir={data_dir}")
         chrome_options.set_capability("goog:loggingPrefs", {"performance": "ALL"})  
 
         #chrome_options.add_argument("--ignore-certificate-errors-spki-list")
 
         #chrome_options.add_argument("--ignore-certificate-errors")
 
-        service = Service(executable_path=self.settings.get("CHROMEDRIVER_PATH"))
+        #service = Service(executable_path=self.settings.get("CHROMEDRIVER_PATH"))
 
         # 使用 seleniumwire 的 webdriver 并传入代理配置
         #self.driver = webdriver.Chrome(options=chrome_options, seleniumwire_options=wire_options, service=service)

@@ -13,6 +13,13 @@ RUN apt-get update && \
 
 
 RUN pip install -U yt-dlp && \
-    pip install ffmpeg-python pycryptodomex scrapy PySocks selenium-wire blinker==1.6.2 undetected-chromedriver -i https://pypi.tuna.tsinghua.edu.cn/simple
-    
+    pip install ffmpeg-python pycryptodomex scrapy PySocks selenium-wire blinker==1.6.2 undetected-chromedriver playwright -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+RUN mkdir -p extensions && \
+    wget https://github.com/gorhill/uBlock/releases/download/1.64.0/uBlock0_1.64.0.chromium.zip && \
+    unzip uBlock0_1.64.0.chromium.zip -d extensions && \
+    rm uBlock0_1.64.0.chromium.zip
+
+RUN playwright install
+
 WORKDIR /app
