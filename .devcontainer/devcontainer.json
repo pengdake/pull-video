@@ -9,6 +9,7 @@
   "remoteUser": "root",
   "mounts": [
     "source=${localWorkspaceFolder}/,target=/app/,type=bind",
-    "source=/home/pi/Videos,target=/videos,type=bind"
+    "source=/home/pdk/Videos,target=/videos,type=bind",
+    "source=/home/pdk/.ssh,target=/root/.ssh,type=bind"
   ]
 }
