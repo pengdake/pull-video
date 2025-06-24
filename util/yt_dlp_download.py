@@ -18,6 +18,7 @@ def download_video(url: str, output_path: str, proxy: str = None):
             ('User-Agent', 'Mozilla/5.0'),
         ],
         'hls_prefer_native': True,
+        "nocheckcertificate": True,
         'outtmpl': output_path,                           # 设置输出文件名
         'noplaylist': True,                               # 避免下载整个播放列表（如果是的话）
     }
@@ -28,7 +29,7 @@ def download_video(url: str, output_path: str, proxy: str = None):
 
 if __name__ == '__main__':
     #url = "https://s6-e1.sbacii.com/ppot/_definst_/mp4:s15/ivod/lxj-cadlz-09-025F12456.mp4/chunklist.m3u8?vendtime=1750581960&vhash=575vNO6OYO9uoPLZF910kV5Wc5jlgtFjZ4kcjeHZc_c=&vCustomParameter=0_188.253.115.249_HK_1_0&lb=45fdd9fe1c4bc8d1cdd8568eb590b591&us=1&proxy=SpOjPJ4kSs9XOsbfBcDlRNnpDYrbCIvYQNHtONbbONGkOsyslZcR5hAObp4yNHtRsTbRcLoOMmkOsyslZcR5hAObpeqjhAuEJAnihINCRUslZcR5hAObpkmlBetixUtCfSnjxD"
-    url = "https://6tm.wdubo.com/20250609/wMCOvkEM/index.m3u8?sign=xjPe2h6mZIoHDt2zcFgObtt5PD3EH3Chaaz9hKI%252BNcM%253D"
-    output_path = '/videos/长安的荔枝/长安的荔枝-07'  # 替换为实际的输出目录
-    download_video(url, output_path, PROXY)
+    url = "https://m3u.nikanba.live/share/3aabc19272c64426987d96292f94dba4.m3u8"
+    output_path = '/videos/扬名立万/扬名立万'  # 替换为实际的输出目录
+    download_video(url, output_path)
     print(f'视频已下载到 {output_path}')

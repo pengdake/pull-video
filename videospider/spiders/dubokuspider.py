@@ -14,7 +14,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 
 class DubokuSpider(scrapy.Spider):
-    name = "dubokuspider"
+    name = "dubokus"
 
     def __init__(self, keyword=None, *args, **kwargs):
         super().__init__(*args, **kwargs)

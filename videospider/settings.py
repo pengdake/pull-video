@@ -23,3 +23,16 @@ CHROMEDRIVER_PATH = '/usr/bin/chromedriver'  # 替换为实际的 chromedriver �
 LOG_ENABLED = True
 #LOG_FILE = 'scrapy.log'  # 日志输出路径
 #LOG_LEVEL = 'DEBUG'            # 可选: DEBUG, INFO, WARNING, ERROR, CRITICAL
+
+# settings.py
+TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
+
+DOWNLOAD_HANDLERS = {
+    "http": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
+    "https": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
+}
+
+# Playwright 浏览器设置
+PLAYWRIGHT_BROWSER_TYPE = "chromium"
+PLAYWRIGHT_LAUNCH_OPTIONS = {"headless": False}
+
