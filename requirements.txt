@@ -1,0 +1,10 @@
+yt-dlp==2025.6.9
+#ffmpeg-python==0.2.0
+pycryptodomex==3.23.0
+scrapy-playwright==0.0.43
+Pysocks==1.7.1
+blinker==1.6.2
+undetected-chromedriver==3.5.5
+playwright==1.52.0
+aiohttp==3.12.13
+

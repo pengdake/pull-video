@@ -1,3 +1,5 @@
+import os
+
 BOT_NAME = "videospider"
 
 SPIDER_MODULES = ["videospider.spiders"]
@@ -9,8 +11,10 @@ ITEM_PIPELINES = {
     "videospider.pipelines.VideoDownloadPipeline": 300,
 }
 
-#PROXY = 'socks5://192.168.31.22:7897'
-PROXY = 'socks5://192.168.31.99:7890'
+# 设置代理
+PROXY = os.getenv('PROXY', 'socks5://192.168.31.99:7890')
+
+# 视频下载目录
 VIDEO_DIR = '/videos/'
 
 DOWNLOADER_MIDDLEWARES = {
@@ -34,5 +38,14 @@ DOWNLOAD_HANDLERS = {
 
 # Playwright 浏览器设置
 PLAYWRIGHT_BROWSER_TYPE = "chromium"
-PLAYWRIGHT_LAUNCH_OPTIONS = {"headless": False}
+PLAYWRIGHT_LAUNCH_OPTIONS = {
+    "headless": True,
+    "args": [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+        "--disable-gpu",
+    ]
+}
+
 

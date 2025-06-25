@@ -5,7 +5,7 @@ from videospider.items import VideoItem
 
 
 class IkanBotsSpider(scrapy.Spider):
-    name = 'ikanbots'
+    name = 'ikanbot'
 
     def __init__(self, keyword=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -47,7 +47,7 @@ class IkanBotsSpider(scrapy.Spider):
         await page.get_by_role("textbox", name="请输入影片、短剧、演职人员").fill(self.keyword)
         await page.get_by_role("button", name="搜索").click()
         await page.get_by_role("link", name=self.keyword).first.click()
-        await page.wait_for_selector("div[name='lineData']")
+        await page.wait_for_selector("div[name='lineData']", timeout=300000)
         # 获取不同线路下的视频链接
         items = await page.locator("div[name='lineData']").all()
         self.logger.info(f"Found {len(items)} video links for keyword '{self.keyword}'")

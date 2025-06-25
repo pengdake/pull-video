@@ -7,14 +7,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-from seleniumwire import webdriver
 import undetected_chromedriver as uc
 from util.util import extract_video_requests
 from selenium.webdriver.common.action_chains import ActionChains
 
 
 class DubokuSpider(scrapy.Spider):
-    name = "dubokus"
+    name = "duboku"
 
     def __init__(self, keyword=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -50,7 +49,7 @@ class DubokuSpider(scrapy.Spider):
         chrome_options.add_argument("--disable-backgrounding-occluded-windows")
         chrome_options.add_argument("--disable-renderer-backgrounding")
         chrome_options.add_argument("--disable-features=TranslateUI,BlinkGenPropertyTrees") 
-        plugin_path = "/extensions"
+        plugin_path = os.path.abspath("extensions")
         # 遍历 extensions 目录下的所有目录
         for ext in os.listdir(plugin_path):
             ext_path = os.path.join(plugin_path, ext)
