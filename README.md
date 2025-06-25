@@ -5,6 +5,11 @@
 * docker 24.07及以上版本
 * 创建视频下载路径/videos
 ## 配置部署
+### 下载源码
+```
+git clone https://github.com/pengdake/pull-video.git
+cd pull-video
+```
 ### 制作容器镜像
 ```
 docker build -t pull-video:latest .
