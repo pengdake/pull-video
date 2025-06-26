@@ -32,4 +32,4 @@ docker exec -it pull-video bash
 # 执行以下命令下载，keyword为视频名称，比如电影名
 scrapy crawl ikanbot -a keyword="触不可及"
 ```
-![下载示例](img/屏幕截图%202025-06-26%20082920.png)
+![下载示例](img/example.png)
