@@ -1,10 +1,15 @@
 # 介绍
-使用爬虫和yt-dlp下载视频，目前支持https://v.ikanbot.com/的视频下载
+使用爬虫和yt-dlp下载视频，目前支持https://v.ikanbot.com/ 的视频下载(本程序仅用于学习参考，禁止用于违法行为)
 ## 环境要求
 * Ubuntu操作系统（windows用户可用wsl创建）
 * docker 24.07及以上版本
 * 创建视频下载路径/videos
 ## 配置部署
+### 安装git
+```
+apt-get update
+apt-get install git -y
+```
 ### 下载源码
 ```
 git clone https://github.com/pengdake/pull-video.git
@@ -25,5 +30,6 @@ docker-compose up -d
 # 进入容器
 docker exec -it pull-video bash
 # 执行以下命令下载，keyword为视频名称，比如电影名
-scrapy crawl ikanbot -a keyword="黑客帝国"
+scrapy crawl ikanbot -a keyword="触不可及"
 ```
+![下载示例](img/屏幕截图%202025-06-26%20082920.png)
