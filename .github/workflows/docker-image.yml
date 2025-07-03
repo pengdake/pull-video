@@ -2,7 +2,8 @@ name: Docker Image CI
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_OWNER: ${{ github.repository_owner }}
+  IMAGE_REPO: ${{ github.event.repository.name }}
   
 on:
   push:
@@ -23,7 +24,9 @@ jobs:
       run: echo "${{ secrets.GHCR_PAT }}" | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
+      run: docker build . --file Dockerfile -t ${{ env.REGISTRY }}/${{ env.IMAGE_OWNER }}/${{ env.IMAGE_REPO }}:latest -t ${{ env.REGISTRY }}/${{ env.IMAGE_OWNER }}/${{ env.IMAGE_REPO }}:${{ github.sha }}
 
     - name: Push image to GitHub Container Registry
-      run: docker push ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
+      run: |
+        docker push ${{ env.REGISTRY }}/${{ env.IMAGE_OWNER }}/${{ env.IMAGE_REPO }}:latest
+        docker push ${{ env.REGISTRY }}/${{ env.IMAGE_OWNER }}/${{ env.IMAGE_REPO }}:${{ github.sha }}
