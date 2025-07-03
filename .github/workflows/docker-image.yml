@@ -1,5 +1,9 @@
 name: Docker Image CI
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  
 on:
   push:
     branches: [ "main" ]
@@ -14,5 +18,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    
+    - name: Log in to GitHub Container Registry
+      run: echo "${{ secrets.GHCR_PAT }}" | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
+
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag pull-video:latest
+      run: docker build . --file Dockerfile --tag ${{ env.IMAGE_NAME }}:latest
+
+    - name: Push image to GitHub Container Registry
+      run: docker push ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
