@@ -2,11 +2,11 @@ version: "3.8"
 
 services:
   pull-video:
-    image: pull-video:latest
+    image: ghcr.io/pengdake/pull-video:latest
     container_name: pull-video
     restart: always
     environment:
-      - PROXY = "socks5://192.168.31.99:7890"
+      - PROXY="socks5://192.168.31.99:7890"
     volumes:
       - /videos:/videos
     command: ["sleep", "infinity"]

@@ -2,22 +2,28 @@
 使用爬虫和yt-dlp下载视频，目前支持https://v.ikanbot.com/ 的视频下载(本程序仅用于学习参考，禁止用于违法行为)
 ## 环境要求
 * Ubuntu操作系统（windows用户可用wsl创建）
-* docker 24.07及以上版本
+* docker 24.07及以上版本(sudo apt-get update && sudo apt-get install -y docker.io docker-compose)
 * 创建视频下载路径/videos
 ## 配置部署
-### 安装git
+### 镜像准备
+可从ghcr.io/pengdake/pull-video:latest直接下载
+```
+docker pull ghcr.io/pengdake/pull-video:latest
+```
+或按照以下步骤自行制作
+#### 安装git
 ```
 apt-get update
 apt-get install git -y
 ```
-### 下载源码
+#### 下载源码
 ```
 git clone https://github.com/pengdake/pull-video.git
 cd pull-video
 ```
-### 制作容器镜像
+#### 制作容器镜像
 ```
-docker build -t pull-video:latest .
+docker build -t ghcr.io/pengdake/pull-video:latest .
 ```
 ### 启动docker-compose
 ```
